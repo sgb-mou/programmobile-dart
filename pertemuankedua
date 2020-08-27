@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: "Pemrograman Mobile",
+    title: "MouApps",
     debugShowCheckedModeBanner: false,
     home: new SettingAppbar(),
   ));
@@ -18,43 +18,31 @@ class SettingAppbarState extends State<SettingAppbar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: Text('Latihan Pertemuan Kedua'),
-      actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.home),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.chat_bubble),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.build),
-            onPressed: () {},
-          ),
-        ],
-       ),
-      drawer: _buildDrawer(),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+        iconTheme: IconThemeData(
+          color: Colors.grey,
+        ),
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Mou Player',
+          style: TextStyle(color: Colors.grey),
+        ),
+        centerTitle: true,
+      ),
+      endDrawer: _buildDrawer(),
     );
   }
 
   Widget _buildDrawer() {
     return SizedBox(
-      width: MediaQuery.of(context).size.width/1.2,
+      width: MediaQuery.of(context).size.width / 1.0,
       child: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            UserAccountsDrawerHeader(
-                accountName: Text("Ovando Exha Valendro"),
-                accountEmail: Text("ndkappraisal@gmail.com"),
-                decoration: BoxDecoration(
-                  color: Colors.teal,
-                ),
-            ),
-            _buildListTile(Icons.message, "Pesan", null),
-            _buildListTile(Icons.person, "Tentang Saya", null),
+            _buildListTile(Icons.search, "Cari", null),
+            _buildListTile(Icons.library_music, "Musik", null),
+            _buildListTile(Icons.video_library, "Film", null),
             _buildListTile(Icons.settings, "Pengaturan", null),
             Divider(
               height: 2.0,
@@ -75,7 +63,7 @@ class SettingAppbarState extends State<SettingAppbar> {
       leading: Icon(iconLeading),
       title: Text(title),
       trailing: Icon(iconTrailing),
-      onTap: () {},
+      onTap: () {Navigator.pop(context);},
     );
   }
 }
